@@ -60,7 +60,7 @@ class GameBox extends StatelessWidget {
           Radius.circular(15),
         ),
       ),
-      child: value != null
+      child: value != 0
           ? Center(
               child: Text(
                 value.toString(),

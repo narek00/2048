@@ -1,3 +1,4 @@
+import 'package:_2048/models/directions.dart';
 import 'package:_2048/providers/game.dart';
 import 'package:_2048/screens/main/widgets/game_box.dart';
 import 'package:flutter/material.dart';
@@ -19,12 +20,19 @@ class GameMap extends HookConsumerWidget {
 
     final _gameState = _gameProvider.gameState;
 
-    return GestureDetector(
-      // onVerticalDragStart: (details) => {print("start $details")},
-      // onVerticalDragEnd: (details) => {print("end $details")},
-      onPanStart: (details) => {print(details)},
-      onPanDown: (details) => {print(details)},
+    Direction direction = Direction.down;
 
+    return GestureDetector(
+      onPanUpdate: (details) {
+        if (details.delta.dx.abs() > details.delta.dy.abs()) {
+          direction = details.delta.dx > 0 ? Direction.right : Direction.left;
+        } else {
+          direction = details.delta.dy > 0 ? Direction.down : Direction.up;
+        }
+      },
+      onPanEnd: (_) {
+        print(direction.toString());
+      },
       child: Container(
         width: mapSize,
         height: mapSize,
