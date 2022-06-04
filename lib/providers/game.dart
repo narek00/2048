@@ -31,7 +31,6 @@ List<int> calculateList(List<int> list) {
   }
 
   if (listWithoutZero.isEmpty) {
-    print("PIDARAZ BLYAT ${list}");
     return list;
   }
 
