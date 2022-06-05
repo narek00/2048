@@ -31,8 +31,7 @@ class GameMap extends HookConsumerWidget {
         }
       },
       onPanEnd: (_) {
-        print(direction.toString());
-        _gameProvider.moveDown();
+        _gameProvider.move(direction);
       },
       child: Container(
         width: mapSize,
